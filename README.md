@@ -1,4 +1,6 @@
 # gamesite
 My game website project
 
-By Reefat Bakht
+By Reefat Bakht.
+
+Website now in development.
