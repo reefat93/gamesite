@@ -5,3 +5,5 @@ By Reefat Bakht.
 
 Website now in development.
 
+Safe.
+
