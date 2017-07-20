@@ -56,5 +56,5 @@
     <finalName>gamesite</finalName>
   </build>
   
-  <groupId>org.jboss.as</groupId>
+  <groupId>com.reefat</groupId>
 </project>
