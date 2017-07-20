@@ -1,4 +1,4 @@
-package com.reefat.gamesite;
+package org.jboss.as.gamesite;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
