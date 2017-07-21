@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reefat.gamesite.rest;
+package com.reefat.gamesite.service;
 
 /**
  * A simple CDI service which is able to say hello to someone
@@ -24,7 +24,7 @@ package com.reefat.gamesite.rest;
  */
 public class HelloService {
 
-    String createHelloMessage(String name) {
+    public String createHelloMessage(String name) {
         return "Hello " + name + "!";
     }
 
