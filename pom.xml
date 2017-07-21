@@ -6,6 +6,15 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>${qs.name.prefix} gamesite</name>
   
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.jboss.bom>10.1.0.Final</version.jboss.bom>
+		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+		<version.war.plugin>3.0.0</version.war.plugin>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+  
   
   <dependencies>
   
