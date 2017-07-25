@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import com.reefat.gamesite.service.HelloService;
 
 /**
  * A simple REST service which is able to say hello to someone using HelloService Please take a look at the web.xml where JAX-RS
@@ -29,7 +30,7 @@ import javax.ws.rs.Produces;
  *
  */
 
-@Path("/")
+@Path("/hello")
 public class HelloWorld {
     @Inject
     HelloService helloService;
