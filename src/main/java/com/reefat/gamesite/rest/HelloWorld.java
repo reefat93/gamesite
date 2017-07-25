@@ -42,11 +42,4 @@ public class HelloWorld {
         return "{\"result\":\"" + helloService.createHelloMessage("World") + "\"}";
     }
 
-    @GET
-    @Path("/xml")
-    @Produces({ "application/xml" })
-    public String getHelloWorldXML() {
-        return "<xml><result>" + helloService.createHelloMessage("World") + "</result></xml>";
-    }
-
 }
