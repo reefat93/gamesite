@@ -32,6 +32,7 @@ public class DBGameService implements GameService {
 	
 			while (rs.next()) {
 				Game game = new Game();
+				game.setGame_id(rs.getInt("game_id"));
 				game.setTitle(rs.getString("title"));
 				gameData.add(game);
 			}
