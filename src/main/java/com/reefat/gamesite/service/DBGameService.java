@@ -27,13 +27,19 @@ public class DBGameService implements GameService {
 		
 		try {
 			
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM mydb.games");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM games");
 			ResultSet rs = ps.executeQuery();
 	
 			while (rs.next()) {
 				Game game = new Game();
 				game.setGame_id(rs.getInt("game_id"));
 				game.setTitle(rs.getString("title"));
+				game.setRelease_date(rs.getString("release_date"));
+				game.setDescription(rs.getString("description"));
+				game.setImage_url(rs.getString("image_url"));
+				game.setAge_rating(rs.getString("age_rating"));
+				game.setGenre_id(rs.getInt("genre_id"));
+				game.setDeveloper_id(rs.getInt("developer_id"));
 				gameData.add(game);
 			}
 	

@@ -11,7 +11,7 @@ public class JDBCConnection {
 		Connection connection = null;
 	
 		try {
-		 String connectionURL = "jdbc:mysql://localhost:3306/mydb";
+		 String connectionURL = "jdbc:mysql://localhost:3306/gamesite_db";
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();
 		 connection = DriverManager.getConnection(connectionURL, "root", "root");
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
