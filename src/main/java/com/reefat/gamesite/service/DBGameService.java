@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import com.reefat.gamesite.database.JDBCConnection;
 import com.reefat.gamesite.persistence.Game;
+import com.reefat.gamesite.persistence.GameComplete;
 import com.reefat.gamesite.util.JSONUtil;
 
 public class DBGameService implements GameService { //GameDAO Implementation with DAO methods
@@ -63,8 +64,44 @@ public class DBGameService implements GameService { //GameDAO Implementation wit
 
 	@Override
 	public String getAllGamesComplete() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<GameComplete> gameCompleteData = new ArrayList<>(); 
+		JDBCConnection jdbcConnection = new JDBCConnection(); 
+		Connection connection = jdbcConnection.getConnnection(); 
+		System.out.println("Connection established.");
+		
+		try {
+			
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM games_complete"); 
+			ResultSet rs = ps.executeQuery(); 
+	
+			while (rs.next()) { 
+				GameComplete gc = new GameComplete();
+				gc.setGame_id(rs.getInt("game_id"));
+				gc.setTitle(rs.getString("title"));
+				gc.setRelease_date(rs.getString("release_date"));
+				gc.setDescription(rs.getString("description"));
+				gc.setImage_url(rs.getString("image_url"));
+				gc.setAge_rating(rs.getString("age_rating"));
+				gc.setGenre_name(rs.getString("genre_name"));
+				gc.setDeveloper_name(rs.getString("developer_name"));
+				gameCompleteData.add(gc); 
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if(connection != null) {
+				try { 
+					connection.close();
+					System.out.println("Connection closed.");
+				} catch (SQLException e) {
+					e.printStackTrace(); }
+			}
+		}
+		
+		return util.getJSONForObject(gameCompleteData); 
+
 	}
 
 }

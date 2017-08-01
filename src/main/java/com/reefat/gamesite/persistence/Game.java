@@ -7,8 +7,8 @@ public class Game {
 	private	String release_date;
 	private String description;
 	private String image_url;
-	private int developer_id;
 	private String age_rating;
+	private int developer_id;
 	private int genre_id;
 	
 	public Game() {
