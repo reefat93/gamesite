@@ -13,7 +13,7 @@ import com.reefat.gamesite.database.JDBCConnection;
 import com.reefat.gamesite.persistence.Game;
 import com.reefat.gamesite.util.JSONUtil;
 
-public class DBGameService implements GameService {
+public class DBGameService implements GameService { //GameDAO Implementation with DAO methods
 	
 	@Inject
 	private JSONUtil util; //instantiated to convert java objects to json with method
@@ -23,7 +23,8 @@ public class DBGameService implements GameService {
 
 		List<Game> gameData = new ArrayList<>(); //Creating an empty arraylist of games
 		JDBCConnection jdbcConnection = new JDBCConnection(); //Instantiation the JDBCConnection class
-		Connection connection = jdbcConnection.getConnnection(); //Setting connection object to the mySQL server connected one 
+		Connection connection = jdbcConnection.getConnnection(); //Setting connection object to the mySQL server connected one
+		System.out.println("Connection established.");
 		
 		try {
 			
@@ -47,6 +48,14 @@ public class DBGameService implements GameService {
 	
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally { 
+			if(connection != null) {
+				try { 
+					connection.close();
+					System.out.println("Connection closed.");
+				} catch (SQLException e) {
+					e.printStackTrace(); }
+			}
 		}
 		
 		return util.getJSONForObject(gameData); //Return the JSON of game objects (converted from Java objects using toJson method)

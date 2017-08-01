@@ -16,10 +16,10 @@ public class GameEndpoint {
 	@Inject
 	private GameService service;
 
-	@Path("/json")
+	@Path("/gamedetails")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllGames() {
+	public String getGamesDetails() {
 		return service.getAllGames();
 	}
 	
