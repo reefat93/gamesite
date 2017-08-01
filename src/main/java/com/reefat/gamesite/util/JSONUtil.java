@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;;
 
 public class JSONUtil {
 
-	private Gson gson;
+	private Gson gson; //Google standard json
 
 	public JSONUtil() {
 		this.gson = new Gson();
