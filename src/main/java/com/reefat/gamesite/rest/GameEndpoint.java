@@ -19,7 +19,7 @@ public class GameEndpoint {
 	@Path("/json")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllMovies() {
+	public String getAllGames() {
 		return service.getAllGames();
 	}
 	

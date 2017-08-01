@@ -15,15 +15,15 @@ public class Game {
 		//Empty Constructor
 	}
 	
-	public Game(int game_id, String title, String release_date, String description, String image_url,
-			int developer_id, String age_rating, int genre_id) {
+	public Game(int game_id, String title, String release_date, String description, String image_url, String age_rating,
+			int developer_id, int genre_id) {
 		this.game_id = game_id;
 		this.title = title;
 		this.release_date = release_date;
 		this.description = description;
 		this.image_url = image_url;
-		this.developer_id = developer_id;
 		this.age_rating = age_rating;
+		this.developer_id = developer_id;
 		this.genre_id = genre_id;
 	}
 	
@@ -57,17 +57,17 @@ public class Game {
 	public void setImage_url(String image_url) {
 		this.image_url = image_url;
 	}
-	public int getDeveloper_id() {
-		return developer_id;
-	}
-	public void setDeveloper_id(int developer_id) {
-		this.developer_id = developer_id;
-	}
 	public String getAge_rating() {
 		return age_rating;
 	}
 	public void setAge_rating(String age_rating) {
 		this.age_rating = age_rating;
+	}
+	public int getDeveloper_id() {
+		return developer_id;
+	}
+	public void setDeveloper_id(int developer_id) {
+		this.developer_id = developer_id;
 	}
 	public int getGenre_id() {
 		return genre_id;
