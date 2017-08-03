@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class DBGameService implements GameService { //GameDAO Implementation wit
 	@Inject
 	private JSONUtil util; //instantiated to convert java objects to json with method
 
-	@Override //Run method!!
+	@Override
 	public String getAllGames() { //Method to get all games (game objects) in Games table 
 
 		List<Game> gameData = new ArrayList<>(); //Creating an empty arraylist of games
@@ -49,6 +50,7 @@ public class DBGameService implements GameService { //GameDAO Implementation wit
 	
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return e.toString();
 		} finally { 
 			if(connection != null) {
 				try { 
@@ -90,6 +92,7 @@ public class DBGameService implements GameService { //GameDAO Implementation wit
 	
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return e.toString();
 		} finally { 
 			if(connection != null) {
 				try { 
@@ -102,6 +105,40 @@ public class DBGameService implements GameService { //GameDAO Implementation wit
 		
 		return util.getJSONForObject(gameCompleteData); 
 
+	}
+
+	@Override
+	public String createGame(String gameJSON) {
+		
+		JDBCConnection jdbcConnection = new JDBCConnection();
+		Connection connection = jdbcConnection.getConnnection();
+		System.out.println("Connection established.");
+		
+		try {
+			
+			Game game = util.getObjectForJSON(gameJSON, Game.class);
+			Statement statement = connection.createStatement();
+			String sqlQuery = "INSERT INTO games VALUES(" + game.getGame_id() + ",'" + game.getTitle() + "','" + game.getRelease_date() + "','"
+			+ game.getDescription() + "','" + game.getImage_url() + "','" + game.getAge_rating() + "'," + game.getDeveloper_id() + ","
+			+ game.getGenre_id() + ")"; 
+			statement.executeUpdate(sqlQuery); 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return util.getJSONForObject(e);
+			
+		} finally { 
+			if(connection != null) {
+				try { 
+					connection.close();
+					System.out.println("Connection closed.");
+				} catch (SQLException e) {
+					e.printStackTrace(); }
+			}
+		}
+		
+		return "{\"message\": \"Game successfully added to database\"}"; 
+		
 	}
 
 }
