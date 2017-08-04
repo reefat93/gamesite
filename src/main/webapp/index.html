@@ -1,15 +1,19 @@
-<html>
+<html ng-app="gamesiteApp">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>gamesite</title>
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/angular-ui-router.js"></script>
 </head>
 <body>
-
-    <p>Choose between <em>JSON</em> or <em>Amit</em>:
-
-    <ul>
-    	<li><a href="rest/hello/json">JSON</a></li>
-        <li style="color: blue;"> AMITTO SAN!</li>
-    </ul>
+    <div>
+        <a ui-sref="home" > Hello Amit! </a>
+        <a ui-sref="game" > Hello Game! </a>
+    </div>
+    <div ui-view> </div>
 </body>
+    
+<!-- App Scripts -->
+<script src="app/app.js" ></script>
+<script src="app/appStateManager.js"></script>
+    
 </html>
