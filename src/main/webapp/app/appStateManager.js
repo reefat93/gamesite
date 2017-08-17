@@ -1,4 +1,4 @@
-var gamesiteApp = angular.module('gamesiteApp', ['ui.router']);
+var gamesiteApp = angular.module('gamesiteApp');
     
 gamesiteApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
