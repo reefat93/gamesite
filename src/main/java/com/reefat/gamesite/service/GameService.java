@@ -8,4 +8,8 @@ public interface GameService {
 
 	String createGame(String gameJSON);
 	
+	String updateGame(String gameJSON);
+	
+	String deleteGame(int game_id);
+	
 }

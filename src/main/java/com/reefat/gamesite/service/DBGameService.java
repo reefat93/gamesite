@@ -141,4 +141,104 @@ public class DBGameService implements GameService { //GameDAO Implementation wit
 		
 	}
 
+	@Override
+	public String updateGame(String gameJSON) {
+		
+		List<Integer> gameIds = new ArrayList<>(); 
+		int updatedGameId;
+		JDBCConnection jdbcConnection = new JDBCConnection();
+		Connection connection = jdbcConnection.getConnnection();
+		System.out.println("Connection established.");
+		
+		try {
+			
+			PreparedStatement ps = connection.prepareStatement("SELECT game_id FROM games"); //Get list of game_ids in Database
+			ResultSet rs = ps.executeQuery(); 
+	
+			while (rs.next()) { 
+				int gameIdInDB = rs.getInt("game_id");
+				gameIds.add(gameIdInDB);
+			}
+			
+			Game updatedGame = util.getObjectForJSON(gameJSON, Game.class);
+			Statement statement = connection.createStatement();
+			
+			if(gameIds.contains(updatedGame.getGame_id())) {
+			
+				String sqlQuery = "UPDATE games SET title = '" + updatedGame.getTitle() + "', release_date = '" 
+						+ updatedGame.getRelease_date() + "', description = '" + updatedGame.getDescription() + "', image_url = '" 
+						+ updatedGame.getImage_url() + "', age_rating = '" + updatedGame.getAge_rating() + "', developer_id = " 
+						+ updatedGame.getDeveloper_id() + ", genre_id = " + updatedGame.getGenre_id() + 
+						" WHERE game_id = " + updatedGame.getGame_id();
+				statement.executeUpdate(sqlQuery);
+				
+			} else { return "{\"message\": \"game_id " + updatedGame.getGame_id() + " not found in database!\"}"; } 
+			//Checks whether game exists in DB by checking id
+			
+			updatedGameId = updatedGame.getGame_id();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return util.getJSONForObject(e);
+			
+		} finally { 
+			if(connection != null) {
+				try { 
+					connection.close();
+					System.out.println("Connection closed.");
+				} catch (SQLException e) {
+					e.printStackTrace(); }
+			}
+		}
+		
+		return "{\"message\": \"Game with id = " + updatedGameId + " successfully updated\"}"; 
+		
+	}
+
+	@Override
+	public String deleteGame(int game_id) {
+		
+		List<Integer> gameIds = new ArrayList<>(); 
+		JDBCConnection jdbcConnection = new JDBCConnection();
+		Connection connection = jdbcConnection.getConnnection();
+		System.out.println("Connection established.");
+		
+		try {
+			
+			PreparedStatement ps = connection.prepareStatement("SELECT game_id FROM games");
+			ResultSet rs = ps.executeQuery(); 
+	
+			while (rs.next()) { 
+				int gameIdInDB = rs.getInt("game_id");
+				gameIds.add(gameIdInDB);
+			}
+			
+			Statement statement = connection.createStatement();
+			if(gameIds.contains(game_id)) {
+			
+				String sqlQuery = "DELETE FROM games WHERE game_id = " + game_id;
+				statement.executeUpdate(sqlQuery);
+				
+			} else { return "{\"message\": \"game_id " + game_id + " not found in database!\"}"; }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return util.getJSONForObject(e);
+			
+		} finally { 
+			if(connection != null) {
+				try { 
+					connection.close();
+					System.out.println("Connection closed.");
+				} catch (SQLException e) {
+					e.printStackTrace(); }
+			}
+		}
+		
+		return "{\"message\": \"Game with id = " + game_id + " successfully deleted\"}"; 
+		
+	}
+	
+	
+
 }
