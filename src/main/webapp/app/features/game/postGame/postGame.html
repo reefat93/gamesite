@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="app/features/game/postGame/postGame.css" />
+
+<div ng-controller="postGameController as ctrl" class="container">
+    
+<h1 id="pageTitle"> Amit's post box </h1>
+
+Game ID:
+<input type="number" ng-model="ctrl.game.game_id" />
+Title:
+<input type="text" ng-model="ctrl.game.title" />
+Release Date:
+<input type="text" ng-model="ctrl.game.release_date" />
+Description:
+<input type="text" ng-model="ctrl.game.description" />
+Image_url:
+<input type="text" ng-model="ctrl.game.image_url" />
+Age Rating:
+<input type="text" ng-model="ctrl.game.age_rating" />
+Developer ID:
+<input type="number" ng-model="ctrl.game.developer_id" />
+Genre ID:
+<input type="number" ng-model="ctrl.game.genre_id" />
+
+<button ng-click="ctrl.printGame()"> Print game to console </button>
+<button ng-click="ctrl.postTheGame()" >Submit</button>
+    
+<br>
+<p>{{ctrl.message}}</p>
+
+</div>

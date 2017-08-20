@@ -7,7 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-//import javax.ws.rs.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.reefat.gamesite.service.GameService;
@@ -47,10 +47,10 @@ public class GameEndpoint {
 		return service.updateGame(gameJSON);
 	}
 	
-	@Path("/game")
+	@Path("/game/{gameId}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteGame(int game_id) {
+	public String deleteGame(@PathParam("gameId") int game_id) {
 		return service.deleteGame(game_id);
 	}
 }

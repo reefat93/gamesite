@@ -11,6 +11,9 @@ gamesiteApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         }).state("game", {
             url: "/game",
             templateUrl: "app/features/game/game.html"
+        }).state("postGame", {
+            url: "/postGame",
+            templateUrl: "app/features/game/postGame/postGame.html"
         });
     }
 ]);
