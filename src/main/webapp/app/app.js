@@ -1,1 +1,1 @@
-var gamesiteApp = angular.module('gamesiteApp', []);
+var gamesiteApp = angular.module('gamesiteApp', ['ui.router']);

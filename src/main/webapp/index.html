@@ -3,17 +3,49 @@
 <title>gamesite</title>
 <script src="scripts/angular.min.js"></script>
 <script src="scripts/angular-ui-router.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="scripts/bootstrap-3.3.7-dist/css/bootstrap.css" />
 </head>
 <body>
-    <div>
-        <a ui-sref="home" > Hello Amit! </a>
-        <a ui-sref="game" > Hello Game! </a>
-    </div>
-    <div ui-view> </div>
-</body>
     
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Big Poppa Gamesite</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="game">Game</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <!-- ui router need to get rid of padding, refer to bootstrap templates --> 
+    <div ui-view style="padding-top: 50px;"> </div>
+    
+    
+</body>
+
+<script src="scripts/jquery-3.2.1.min.js"></script>
+<script src="scripts/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+
 <!-- App Scripts -->
 <script src="app/app.js" ></script>
 <script src="app/appStateManager.js"></script>
+
+<!-- Controllers -->
+<script src="app/features/game/gameController.js"></script>
+    
+<!-- Services -->
+<script src="app/services/gameService.js"></script>
     
 </html>

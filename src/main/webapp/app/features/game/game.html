@@ -1,1 +1,13 @@
-<h1> AMIT's games </h1>
+<link rel="stylesheet" href="app/features/game/game.css" />
+
+<div ng-controller="gameController as ctrl" class="container">
+    
+<h1 id="pageTitle"> AMIT's games: </h1>
+    
+<div ng-repeat="game in ctrl.games">
+    <h5> {{ game.title }} </h5>
+</div>
+
+
+    
+</div>
