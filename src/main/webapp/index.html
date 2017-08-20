@@ -23,6 +23,13 @@
           <ul class="nav navbar-nav">
             <li><a ui-sref="home">Home</a></li>
             <li><a ui-sref="game">Game</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Game <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="game">Get Games</a></li>
+                    <li><a ui-sref="postGame">Post Games</a></li>
+                </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -44,6 +51,7 @@
 
 <!-- Controllers -->
 <script src="app/features/game/gameController.js"></script>
+<script src="app/features/game/postGame/postGameController.js"></script>
     
 <!-- Services -->
 <script src="app/services/gameService.js"></script>
